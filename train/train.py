@@ -34,16 +34,16 @@ def train(model, loss_fn, metric_fn, epochs=20, batch_size=64, num_classes=10, l
     if loss_fn == 'vgg16':
         loss_fn = vgg16_loss
 
-    if metric_fn == 'inception_v3':
+    if metric_fn == 'vgg16':
         metric_fn = vgg16_accuracy
 
-    inception_v3_trainer = VGG16Trainer(model=model, loss=loss_fn, optimizer=optimizer, metric=metric_fn,
-                                        train_data_loader=train_data_loader, valid_data_loader=valid_data_loader,
-                                        mac_gpu=True)
-    train_loss, train_acc = inception_v3_trainer.train(epochs)
+    vgg16_v3_trainer = VGG16Trainer(model=model, loss=loss_fn, optimizer=optimizer, metric=metric_fn,
+                                    train_data_loader=train_data_loader, valid_data_loader=valid_data_loader,
+                                    mac_gpu=True)
+    train_loss, train_acc = vgg16_v3_trainer.train(epochs)
     print(f"Trian Loss : {train_loss}, Trian accuracy : {train_acc}")
 
-    val_loss, val_acc = inception_v3_trainer.validate()
+    val_loss, val_acc = vgg16_v3_trainer.validate()
     print(f"Validation Loss : {val_loss}, Validation accuracy : {val_acc}")
 
 
